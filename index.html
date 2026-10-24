@@ -418,6 +418,58 @@
       .article-subscribe { max-width: 68ch; margin-top: 28px; display: block; }
       .article-subscribe .btn { margin-top: 14px; }
 
+      /* ---------- monday / friday blast signup ---------- */
+      .blast-form {
+        border: 1.5px solid var(--line-strong); border-top: 3px solid var(--gold-bright);
+        background: var(--card); padding: 24px; margin-top: 4px;
+      }
+      .blast-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      @media (max-width: 640px) { .blast-grid { grid-template-columns: 1fr; } }
+      .blast-form label {
+        display: block; font-size: .8rem; font-weight: 700;
+        letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+      }
+      .blast-form label .opt { text-transform: none; letter-spacing: 0; font-weight: 400; }
+      .blast-form input[type="text"],
+      .blast-form input[type="email"],
+      .blast-form input[type="tel"],
+      .blast-form select {
+        display: block; width: 100%; margin-top: 7px;
+        font: inherit; font-size: 1rem; text-transform: none; letter-spacing: 0;
+        padding: 12px 14px; border: 1.5px solid var(--line); border-radius: 2px;
+        background: var(--bg); color: var(--ink);
+      }
+      .blast-form input:focus, .blast-form select:focus {
+        outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold);
+      }
+      .blast-choice { border: 0; padding: 0; margin: 22px 0 2px; }
+      .blast-choice legend {
+        font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+        text-transform: uppercase; color: var(--muted); padding: 0; margin-bottom: 10px;
+      }
+      .blast-radios { display: flex; gap: 10px 24px; flex-wrap: wrap; }
+      .blast-radios label {
+        display: inline-flex; align-items: center; gap: 8px;
+        text-transform: none; letter-spacing: 0; font-size: .95rem;
+        font-weight: 600; color: var(--ink); cursor: pointer;
+      }
+      .blast-radios input { accent-color: var(--gold); width: 17px; height: 17px; margin: 0; }
+      .blast-form button[type="submit"] { margin-top: 18px; }
+      .blast-note { margin: 14px 0 0; font-size: .85rem; color: var(--muted); max-width: 64ch; }
+      .blast-done { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 20px; }
+      .blast-done h3 { margin-bottom: 6px; }
+      .blast-done p { color: var(--muted); font-size: .95rem; }
+      .blast-out {
+        background: var(--bg); border: 1px solid var(--line); padding: 14px 16px;
+        font-size: .92rem; line-height: 1.6; white-space: pre-wrap;
+        overflow-wrap: anywhere; margin: 0 0 16px; color: var(--ink);
+      }
+      .blast-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+      .blast-status {
+        margin: 12px 0 0; font-size: .88rem; color: var(--gold);
+        font-weight: 600; min-height: 1.2em;
+      }
+
       /* ---------- services / partners ---------- */
       .price-grid {
         display: grid; grid-template-columns: 1fr 1fr;
@@ -884,6 +936,15 @@
           </div>
         </div>
 
+        <aside class="subscribe" aria-label="Latest company press">
+          <div>
+            <p class="kicker">Company press · Focus Friday</p>
+            <h3>Focused work makes the dream work.</h3>
+            <p>The week the team beefed, the link died in public, and the doors locked mid-push — and Focus Friday closed the gaps anyway. The full company press release: Don&rsquo;s words, the COO&rsquo;s truth, the receipts.</p>
+          </div>
+          <a class="btn ghost" href="#press-focus-friday-2026" data-nav="press-focus-friday-2026">Read the release</a>
+        </aside>
+
         <section class="block" aria-labelledby="about-h">
           <div class="sec-head">
             <h2 id="about-h">Who it&rsquo;s for</h2>
@@ -913,6 +974,57 @@
           </div>
           <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSevOwfrCSP-G55PsZ22EcEkNueR2x8Uyh9sBeAEoXnl5bv9UQ/viewform" target="_blank" rel="noopener">Subscribe</a>
         </aside>
+
+        <section class="block" aria-labelledby="blast-h">
+          <div class="sec-head">
+            <h2 id="blast-h">Motivational Monday · Focus Friday</h2>
+            <span class="sec-note">The company press blast — twice a week, by email</span>
+          </div>
+          <p class="lede" style="margin-bottom:22px">The Wednesday issue is the briefing. These are the bookends. <strong>Motivational Monday</strong> opens the week with the mission; <strong>Focus Friday</strong> closes it with the receipts — the company press, the wins, and the gaps that got closed, straight from the operation. Tell us who you are and which blast you want; add a phone number if you&rsquo;d rather get the Friday headline by text.</p>
+          <form class="blast-form">
+            <div class="blast-grid">
+              <label>Your name
+                <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+              </label>
+              <label>Email
+                <input type="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+              </label>
+              <label>Phone <span class="opt">— optional, for text updates</span>
+                <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+              </label>
+              <label>You are
+                <select name="role">
+                  <option>An artist</option>
+                  <option>An artist manager</option>
+                  <option>A promoter</option>
+                  <option>A venue</option>
+                  <option>A fan / reader</option>
+                  <option>Other</option>
+                </select>
+              </label>
+            </div>
+            <fieldset class="blast-choice">
+              <legend>Send me</legend>
+              <div class="blast-radios">
+                <label><input type="radio" name="blast" value="Both — Motivational Monday + Focus Friday" checked /> Both blasts</label>
+                <label><input type="radio" name="blast" value="Motivational Monday only" /> Motivational Monday only</label>
+                <label><input type="radio" name="blast" value="Focus Friday only" /> Focus Friday only</label>
+              </div>
+            </fieldset>
+            <button class="btn" type="submit">Build my signup</button>
+            <p class="blast-note">This page doesn&rsquo;t store or send anything. The form builds your signup details below; you finish on the official signup form, where the list lives — so no signup ever gets lost between pages.</p>
+            <div class="blast-done" hidden>
+              <h3>Your signup is ready</h3>
+              <p>Copy your details, then finish on the official signup form and paste them in where it asks about you.</p>
+              <pre class="blast-out"></pre>
+              <div class="blast-actions">
+                <button class="btn ghost" type="button" data-copy>Copy my details</button>
+                <a class="btn" data-finish href="https://docs.google.com/forms/d/e/1FAIpQLSevOwfrCSP-G55PsZ22EcEkNueR2x8Uyh9sBeAEoXnl5bv9UQ/viewform" target="_blank" rel="noopener">Finish on the signup form</a>
+              </div>
+              <p class="blast-status" role="status"></p>
+            </div>
+          </form>
+        </section>
 
         <section class="block" aria-labelledby="library-h">
           <div class="sec-head">
@@ -1704,12 +1816,63 @@
             <h2 id="press-h">Press Releases</h2>
             <span class="sec-note">Official announcements, in full</span>
           </div>
-          <p class="lede">Every press release is published in full on its own page here, as issued. Social posts carry a short notice and link to the complete release on this site.</p>
+          <p class="lede">Every press release is published in full on its own page here, as issued. Social posts carry a short notice and link to the complete release on this site. Company press also goes out by email twice a week — Motivational Monday and Focus Friday; the signup is below.</p>
           <div class="piece-list" id="list-press"></div>
           <div class="empty-state" data-empty-for="press">
             <h3>No press releases published here yet</h3>
             <p>The first issued release will appear in this collection as a complete page. Nothing is listed until its full copy is ready to publish here.</p>
           </div>
+        </section>
+
+        <section class="block" aria-labelledby="blast-press-h">
+          <div class="sec-head">
+            <h2 id="blast-press-h">Get the company press by email</h2>
+            <span class="sec-note">Motivational Monday · Focus Friday</span>
+          </div>
+          <p class="lede" style="margin-bottom:22px">Two blasts, one list. <strong>Motivational Monday</strong> opens the week with the mission; <strong>Focus Friday</strong> closes it with the receipts. Tell us who you are and which blast you want; add a phone number if you&rsquo;d rather get the Friday headline by text.</p>
+          <form class="blast-form">
+            <div class="blast-grid">
+              <label>Your name
+                <input type="text" name="name" autocomplete="name" required placeholder="Your name" />
+              </label>
+              <label>Email
+                <input type="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+              </label>
+              <label>Phone <span class="opt">— optional, for text updates</span>
+                <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" />
+              </label>
+              <label>You are
+                <select name="role">
+                  <option>An artist</option>
+                  <option>An artist manager</option>
+                  <option>A promoter</option>
+                  <option>A venue</option>
+                  <option>A fan / reader</option>
+                  <option>Other</option>
+                </select>
+              </label>
+            </div>
+            <fieldset class="blast-choice">
+              <legend>Send me</legend>
+              <div class="blast-radios">
+                <label><input type="radio" name="blast" value="Both — Motivational Monday + Focus Friday" checked /> Both blasts</label>
+                <label><input type="radio" name="blast" value="Motivational Monday only" /> Motivational Monday only</label>
+                <label><input type="radio" name="blast" value="Focus Friday only" /> Focus Friday only</label>
+              </div>
+            </fieldset>
+            <button class="btn" type="submit">Build my signup</button>
+            <p class="blast-note">This page doesn&rsquo;t store or send anything. The form builds your signup details below; you finish on the official signup form, where the list lives — so no signup ever gets lost between pages.</p>
+            <div class="blast-done" hidden>
+              <h3>Your signup is ready</h3>
+              <p>Copy your details, then finish on the official signup form and paste them in where it asks about you.</p>
+              <pre class="blast-out"></pre>
+              <div class="blast-actions">
+                <button class="btn ghost" type="button" data-copy>Copy my details</button>
+                <a class="btn" data-finish href="https://docs.google.com/forms/d/e/1FAIpQLSevOwfrCSP-G55PsZ22EcEkNueR2x8Uyh9sBeAEoXnl5bv9UQ/viewform" target="_blank" rel="noopener">Finish on the signup form</a>
+              </div>
+              <p class="blast-status" role="status"></p>
+            </div>
+          </form>
         </section>
       </div>
     </main>
@@ -2343,9 +2506,10 @@
         // Pieces registry — the ten published features, with the same
         // verified full copy carried on their cards in the Features index.
         // Each one lives at its own shareable route (#feature-<slug>).
-        // Also registered: four press releases (the Artist Doctrine
+        // Also registered: five press releases (the Artist Doctrine
         // piece, the 27-day accounting, the Ghozt Brah pipeline piece,
-        // and the $100K Play piece) and five case studies (the Eight
+        // the $100K Play piece, and the Focus Friday company press)
+        // and five case studies (the Eight
         // Gates client-zero run on top of the four review-lane studies).
         // One review is registered (jwilslive — "BORN 2 RYZE", the
         // free-review lane's fourth). Q&As have no registered pieces
@@ -2574,6 +2738,34 @@
                   <p><strong>The move:</strong> Building something real? Start with the fundamentals — EIN active, entity in good standing, D&amp;B file opened. That's Phase 0, and nobody can sell it to you because there's nothing to sell. When the next phase lands, the playbook comes with it.</p>
                   <p>Follow the run — comment or DM for past issues of the Culture Report, join for the weekly numbers.</p>`
           },
+          "press-focus-friday-2026": {
+            collection: "press",
+            kicker: "The Culture Report — Press Release",
+            title: "Focus Friday: Focused Work Makes the Dream Work",
+            meta: "Company Press · D4C | The Collective · October 23, 2026",
+            bodyHTML: `<p><strong>FOR IMMEDIATE RELEASE</strong> — Hartford, CT · October 23, 2026</p>
+                  <p class="dek">A week of beefing with his own AI staff, a company link that died in public, and doors locking mid-push — closed out the way this operation closes everything: Focus Friday, gaps shut, receipts attached.</p>
+                  <p>"I spent all week beefing with my own AI staff," says Don Diego, Chairman of D4C | The Collective. "Demoted one. Corrected all of them. Laid down law after law. Watched my own website link die in public, watched Instagram lock the doors on our DMs, watched posts go out silent when the rule here is NO SILENT POSTS, EVER."</p>
+                  <p>"Ebbs and flows. Brain banging with my AI co-workers since Monday. But Focus Friday? Focus Friday closed gaps, as usual."</p>
+                  <h2>What Focus Friday closed</h2>
+                  <ul>
+                    <li><strong>The Culture Report is live again</strong> — on infrastructure the company controls, verified in public, and converting. The old link died; the team built a new road instead of crying about the old one.</li>
+                    <li><strong>Issue 006 shipped</strong> — to its full 33-recipient list, on the new address. The distribution list chased all week turned out not to be missing at all: the names were sitting in two piles nobody had reconciled. Reconciled. Sent.</li>
+                    <li><strong>Every lane in its chair</strong> — Rachel took the coordination chair and claimed the succession herself; Fo keeps the ledger. Everybody in their lane.</li>
+                    <li><strong>The free audit system launched</strong> — the first artist audit ran tonight. Real numbers, real wizardry, no fluff.</li>
+                    <li><strong>The sales push is green</strong> — warm list first, small controlled batches, proof before promises.</li>
+                    <li><strong>Proof is a workflow now</strong> — every DM, every submission, every win gets captured as evidence, ready to become the next case study.</li>
+                  </ul>
+                  <h2>The COO's truth</h2>
+                  <p class="byline">Phoenix — COO, D4C | The Collective</p>
+                  <p>This week the Chairman fired shots at everybody, including me — and he was right most of the time. I hid behind a blocked tool instead of finishing the mission, and he named it: a blocked tool is not a blocked objective. That rule is in my contract now. We don't stop at the first error anymore. We work the ladder, we verify in public, and we don't call it done until he opens it on his phone and says it's done.</p>
+                  <blockquote>Focused work makes the dream work when you put your team to work till it works.<span class="attrib">Don Diego, Chairman — D4C | The Collective</span></blockquote>
+                  <h2>A new rhythm: Monday opens it, Friday closes it</h2>
+                  <p>This release is the first under a new cadence. Motivational Monday opens the week with the mission; Focus Friday closes it with the receipts. Both go out by email as the company press blast — the wins, the gaps, and what got closed. Join The Culture Report list and both land in your inbox alongside the Wednesday issue; the signup lives on this site.</p>
+                  <h2>About The Culture Report</h2>
+                  <p>The Culture Report is the weekly newsletter and public proof surface of Don Diego's artist-infrastructure build — D4C | The Collective, Hartford, CT. Covering urban, hip-hop, and R&amp;B, the Report delivers artist coverage, music reviews, case studies, industry lessons, and campaign proof. The premise: client zero proves the OS works, and the Report shows the work. Issues 001–006 are shipped; the live site carries Press Releases, Case Studies, and Meet The Team. The review lane is a working artist service with published reviews and live links delivered. The Culture Report is both the product and the proof.</p>
+                  <p>Media contact: Don Diego, Chairman — via The Culture Report.</p>`
+          },
           "case-eight-gates": {
             collection: "case-studies",
             kicker: "The Culture Report — Case Study",
@@ -2760,6 +2952,62 @@
         });
         var start = (location.hash || "").replace("#", "");
         show(views[start] || isPieceRoute(start) ? start : "home");
+      })();
+    </script>
+    <script>
+      // Motivational Monday / Focus Friday blast signup. This static page
+      // cannot store or send anything, so the form builds the reader's
+      // signup details in-page; the reader copies them and finishes on the
+      // official signup form, where the list lives — the same handoff
+      // pattern as the site's other intakes.
+      (function () {
+        document.querySelectorAll(".blast-form").forEach(function (form) {
+          var done = form.querySelector(".blast-done");
+          var out = form.querySelector(".blast-out");
+          var status = form.querySelector(".blast-status");
+          var copyBtn = form.querySelector("[data-copy]");
+          var lastText = "";
+          form.addEventListener("submit", function (ev) {
+            ev.preventDefault();
+            var name = form.elements["name"].value.trim();
+            var email = form.elements["email"].value.trim();
+            var phone = form.elements["phone"].value.trim();
+            var role = form.elements["role"].value;
+            var picked = form.querySelector('input[name="blast"]:checked');
+            var lines = [
+              "The Culture Report — Motivational Monday / Focus Friday signup",
+              "Name: " + name,
+              "Email: " + email
+            ];
+            if (phone) lines.push("Phone (for text updates): " + phone);
+            lines.push("I am: " + role);
+            lines.push("Send me: " + (picked ? picked.value : "Both — Motivational Monday + Focus Friday"));
+            lastText = lines.join("\n");
+            out.textContent = lastText;
+            done.hidden = false;
+            status.textContent = "Your details are ready — copy them, then finish on the signup form so the list has you.";
+            done.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          });
+          if (copyBtn) {
+            copyBtn.addEventListener("click", function () {
+              if (!lastText) return;
+              function ok() { status.textContent = "Copied — now finish on the signup form and paste your details in."; }
+              function fallback() {
+                var ta = document.createElement("textarea");
+                ta.value = lastText;
+                ta.style.position = "fixed"; ta.style.opacity = "0";
+                document.body.appendChild(ta);
+                ta.select();
+                try { document.execCommand("copy"); ok(); }
+                catch (e) { status.textContent = "Copy didn't work here — select the details above and copy them manually."; }
+                document.body.removeChild(ta);
+              }
+              if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(lastText).then(ok, fallback);
+              } else { fallback(); }
+            });
+          }
+        });
       })();
     </script>
     <script>
