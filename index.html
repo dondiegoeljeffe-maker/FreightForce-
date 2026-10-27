@@ -909,9 +909,8 @@
         <nav class="main" aria-label="Sections">
           <button type="button" data-nav="home" aria-current="page">Home</button>
           <button type="button" data-nav="issues">Issues</button>
-          <button type="button" data-nav="reviews">Reviews</button>
-          <button type="button" data-nav="features">Features</button>
-          <button type="button" data-nav="press">Press</button>
+          <button type="button" data-nav="artists">Artists</button>
+          <button type="button" data-nav="press">Press &amp; Announcements</button>
           <button type="button" data-nav="case-studies">Case Studies</button>
           <button type="button" data-nav="qas">Q&amp;As</button>
           <button type="button" data-nav="work">Work</button>
@@ -1550,6 +1549,42 @@
          Never seed a collection with invented copy.
     ================= -->
 
+    <!-- ================= ARTISTS — central directory (2026-10-27) =================
+         Features and Reviews are content categories here, not competing
+         navigation pages. Every card below links to a full, approved piece
+         already published on this site. Social posts carry short teasers
+         and link here; they are not the piece itself. No artist is listed
+         with an empty article page, and no unpublished review is implied.
+         The #reviews and #features index views still resolve by direct
+         hash for piece backlinks; they are no longer main navigation. -->
+    <main id="view-artists" class="view" hidden>
+      <div class="wrap">
+        <section class="block" aria-labelledby="artists-h">
+          <div class="sec-head">
+            <h2 id="artists-h">Artists</h2>
+            <span class="sec-note">All artists, in one directory</span>
+          </div>
+          <p class="lede">Every artist below links to a full, approved piece published here in full — a Feature (artist profile, interview, or editorial feature) or a Review (song, album, or project review). Social posts carry a short teaser and link to the full piece on this site; the social blurb is not the review or feature.</p>
+          <div class="piece-list" id="list-artists">
+            <h3>Features — artist profiles, interviews, and editorial features</h3>
+              <a class="issue" href="#feature-spida4eva" data-nav="feature-spida4eva"><span class="no">F<small>Feature</small></span><span><h3>spida4eva Steps Into The Culture Report Lane With &quot;Robbing The Bank&quot;</h3><p>@spida4eva · Feature · October 23, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-blasian" data-nav="feature-blasian"><span class="no">F<small>Feature</small></span><span><h3>Blasian</h3><p>@presidential.blasian_ · Feature · October 22, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-cj" data-nav="feature-cj"><span class="no">F<small>Feature</small></span><span><h3>CJ</h3><p>@kooldudecj · Feature · October 22, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-tmb-fresh" data-nav="feature-tmb-fresh"><span class="no">F<small>Feature</small></span><span><h3>TMB Fresh</h3><p>@fuego_fresh · Feature · October 22, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-kwa-po" data-nav="feature-kwa-po"><span class="no">F<small>Feature</small></span><span><h3>Kwa Po</h3><p>@kwa_po · Feature · October 21, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-risky-raw" data-nav="feature-risky-raw"><span class="no">F<small>Feature</small></span><span><h3>Risky Raw — &quot;Pain &amp; Bars&quot;</h3><p>@riskkyraw · Feature · October 20, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-faye-miss" data-nav="feature-faye-miss"><span class="no">F<small>Feature</small></span><span><h3>Faye Miss — bar for bar, she doesn&#x27;t disappoint</h3><p>@iamfayemiss · Feature · October 20, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-fly-bandz-danero" data-nav="feature-fly-bandz-danero"><span class="no">F<small>Feature</small></span><span><h3>Fly Bandz Danero — Hartford&#x27;s own</h3><p>@fly_bandz_danero · Feature · October 18, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-smooth-haynes" data-nav="feature-smooth-haynes"><span class="no">F<small>Feature</small></span><span><h3>Smooth Haynes: The Quiet Master, Finally in the Light</h3><p>@smooth_haynes · Feature · October 11, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-hartford-po" data-nav="feature-hartford-po"><span class="no">F<small>Feature</small></span><span><h3>Hartford PO: Raw, Uncut, and Undeniable</h3><p>@hartfordpo860 · Feature · October 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-t-sexie" data-nav="feature-t-sexie"><span class="no">F<small>Feature</small></span><span><h3>T-Sexie: Answer Louder</h3><p>@tsexie_ · Feature · October 11, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+            <h3 style="margin-top:30px">Reviews — song, album, and project reviews</h3>
+              <a class="issue" href="#review-jwilslive-born-2-ryze" data-nav="review-jwilslive-born-2-ryze"><span class="no">R<small>Review</small></span><span><h3>jwilslive — &quot;BORN 2 RYZE&quot; — the fourth review in the free-review lane is in production.</h3><p>@jwilslive · Review · October 17, 2026</p></span><span class="read">Read review &rarr;</span></a>
+          </div>
+        </section>
+      </div>
+    </main>
+
     <!-- REVIEWS — index -->
     <main id="view-reviews" class="view" hidden>
       <div class="wrap">
@@ -1819,10 +1854,10 @@
       <div class="wrap">
         <section class="block" aria-labelledby="press-h">
           <div class="sec-head">
-            <h2 id="press-h">Press Releases</h2>
-            <span class="sec-note">Official announcements, in full</span>
+            <h2 id="press-h">Press &amp; Announcements</h2>
+            <span class="sec-note">Official company news, in full</span>
           </div>
-          <p class="lede">Every press release is published in full on its own page here, as issued. Social posts carry a short notice and link to the complete release on this site. Company press also goes out by email twice a week — Motivational Monday and Focus Friday; the signup is below.</p>
+          <p class="lede">Official D4C company news, published in full: company announcements, The Culture Report launch and official milestones, Focus Friday announcements, and verified partnerships, projects, and achievements. This page is official company news — separate from independent music journalism, which lives in the Artists directory as Features and Reviews. Social posts carry a short notice and link to the complete release on this site.</p>
           <div class="piece-list" id="list-press"></div>
           <div class="empty-state" data-empty-for="press">
             <h3>No press releases published here yet</h3>
@@ -2495,7 +2530,31 @@
       </div>
     </footer>
 
-    <script>
+        <!-- ================= STUDIO MEMBERSHIP — STAGED DRAFT (2026-10-27) =================
+         For Don's review only. Registered in the router as #studio-membership
+         so it can be opened by direct hash, but it is intentionally linked
+         NOWHERE in main navigation: no prices, no access promises, no
+         unlimited usage, and no tiers are published here. It goes public
+         only on Don's sign-off of its exact copy and inquiry route. -->
+    <main id="view-studio-membership" class="view" hidden>
+      <div class="tcr-draft-banner" role="note">DRAFT PREVIEW — staged for Don's review only. Not public. Linked nowhere.</div>
+      <div class="wrap">
+        <div class="article-head">
+          <p class="kicker">Studio Membership — Interest</p>
+          <h1 class="article-title">Studio Membership</h1>
+          <p class="article-meta">Interest page — details confirmed in writing before any commitment</p>
+        </div>
+        <div class="article-body">
+          <p class="lede">A future studio membership is being scoped — a recurring way for artists to work with the studio. This page exists to collect qualified interest before any recurring service costs are committed.</p>
+          <p>What this page is, and is not: it is an explanation of the concept and an inquiry route. It is not an offer, a price, a schedule, or a promise of access. Availability, scope, and pricing — if any — are confirmed in writing before any commitment is made.</p>
+          <h2>How interest works</h2>
+          <p>Use the existing website intake form and note “Studio Membership” in your message. Submitting that form does not start work, does not create a client agreement, and does not book studio time. The team will reply with what, if anything, is actually available, and on what written terms.</p>
+          <p><a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSenvYTASizf8l0tv-MWoRwX225kliGKpNsVb1S6-7U6to3KrQ/viewform" target="_blank" rel="noopener">Express studio membership interest — website intake form</a></p>
+        </div>
+      </div>
+    </main>
+
+<script>
       (function () {
         // Published views. Issue 005 is staged in the DOM but intentionally
         // NOT registered here: it publishes only after its Oct 14 send is
@@ -2856,6 +2915,8 @@
           features: "view-features",
           press: "view-press",
           "case-studies": "view-case-studies",
+          artists: "view-artists",
+          "studio-membership": "view-studio-membership",
           qas: "view-qas",
           piece: "view-piece",
           "issue-001": "view-issue-001",
