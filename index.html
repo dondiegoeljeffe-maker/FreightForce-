@@ -1575,6 +1575,7 @@
               <a class="issue" href="#feature-risky-raw" data-nav="feature-risky-raw"><span class="no">F<small>Feature</small></span><span><h3>Risky Raw — &quot;Pain &amp; Bars&quot;</h3><p>@riskkyraw · Feature · October 20, 2026</p></span><span class="read">Read feature &rarr;</span></a>
               <a class="issue" href="#feature-faye-miss" data-nav="feature-faye-miss"><span class="no">F<small>Feature</small></span><span><h3>Faye Miss — bar for bar, she doesn&#x27;t disappoint</h3><p>@iamfayemiss · Feature · October 20, 2026</p></span><span class="read">Read feature &rarr;</span></a>
               <a class="issue" href="#feature-fly-bandz-danero" data-nav="feature-fly-bandz-danero"><span class="no">F<small>Feature</small></span><span><h3>Fly Bandz Danero — Hartford&#x27;s own</h3><p>@fly_bandz_danero · Feature · October 18, 2026</p></span><span class="read">Read feature &rarr;</span></a>
+              <a class="issue" href="#feature-ghozt-brah" data-nav="feature-ghozt-brah"><span class="no">F<small>Feature</small></span><span><h3>Ghozt Brah &mdash; pain music that actually hurts</h3><p>@ghoztbrah · Feature · October 13, 2026</p></span><span class="read">Read feature &rarr;</span></a>
               <a class="issue" href="#feature-smooth-haynes" data-nav="feature-smooth-haynes"><span class="no">F<small>Feature</small></span><span><h3>Smooth Haynes: The Quiet Master, Finally in the Light</h3><p>@smooth_haynes · Feature · October 11, 2026</p></span><span class="read">Read feature &rarr;</span></a>
               <a class="issue" href="#feature-hartford-po" data-nav="feature-hartford-po"><span class="no">F<small>Feature</small></span><span><h3>Hartford PO: Raw, Uncut, and Undeniable</h3><p>@hartfordpo860 · Feature · October 2026</p></span><span class="read">Read feature &rarr;</span></a>
               <a class="issue" href="#feature-t-sexie" data-nav="feature-t-sexie"><span class="no">F<small>Feature</small></span><span><h3>T-Sexie: Answer Louder</h3><p>@tsexie_ · Feature · October 11, 2026</p></span><span class="read">Read feature &rarr;</span></a>
@@ -1759,6 +1760,24 @@
                     <iframe src="https://www.instagram.com/reel/DeqQiJqD3PT/embed" title="Fly Bandz Danero feature reel on Instagram" loading="lazy" allowfullscreen scrolling="no" allow="encrypted-media; picture-in-picture"></iframe>
                   </div>
                   <a class="feat-link" href="https://www.instagram.com/reel/DeqQiJqD3PT/" target="_blank" rel="noopener">Watch on Instagram &rarr;</a>
+                </div>
+              </div>
+            </article>
+            <article class="feat-card">
+              <h3 class="feat-headline">Ghozt Brah — pain music that actually hurts</h3>
+              <p class="handle">Hartford, CT • @ghoztbrah</p>
+              <p class="feat-line">Feature reel — published October 13, 2026 · First Circle of Influence artist page</p>
+              <div class="feat-layout">
+                <div class="feat-writeup">
+                  <p>Pain music for the ones who carry it. Ghozt came through the full feature pipeline first — discovery, audit, write-up, publish, first contact — and now he&rsquo;s the first Circle of Influence artist with a home on The Culture Report.</p>
+                  <p>Two new songs in the works: &ldquo;HandCuffs&rdquo; (5:37) and &ldquo;Live Like This&rdquo; (3:22). &ldquo;See No Evil&rdquo; (prod. Hebrew Beatz) out now on his YouTube.</p>
+                  <a class="feat-link" href="#feature-ghozt-brah" data-nav="feature-ghozt-brah">Read the full feature &rarr;</a>
+                </div>
+                <div class="feat-side">
+                  <div class="feat-embed">
+                    <iframe src="https://www.instagram.com/reel/Demo2OPDqm-/embed" title="Ghozt Brah HandCuffs reel on Instagram" loading="lazy" allowfullscreen scrolling="no" allow="encrypted-media; picture-in-picture"></iframe>
+                  </div>
+                  <a class="feat-link" href="https://www.instagram.com/reel/Demo2OPDqm-/" target="_blank" rel="noopener">Watch on Instagram &rarr;</a>
                 </div>
               </div>
             </article>
@@ -2601,7 +2620,7 @@
           "case-studies": { label: "Case Studies", singular: "Case Study", prefix: "case-" },
           qas: { label: "Q&As", singular: "Q&A", prefix: "qa-" }
         };
-        // Pieces registry — the ten published features, with the same
+        // Pieces registry — the eleven published features, with the same
         // verified full copy carried on their cards in the Features index.
         // Each one lives at its own shareable route (#feature-<slug>).
         // Also registered: five press releases (the Artist Doctrine
@@ -2704,6 +2723,59 @@
                   <p>🎥 @fullexposurelens</p>
                   <p>New updates on site daily — check link in bio, sign up for the newsletter.</p>
                   <p>Live proof: <a href="https://www.instagram.com/reel/DeqQiJqD3PT/" target="_blank" rel="noopener">https://www.instagram.com/reel/DeqQiJqD3PT/</a></p>`
+          },
+          // ARTIST PAGE TEMPLATE v1 — Ghozt Brah is the first use (Don order 2026-11-05,
+          // first Circle of Influence artist activation). Repeatable blocks, in order:
+          // dek + intro / music / videos / about / follow / membership / merch /
+          // booking + contact / how-this-page-works. Next artist: swap the facts,
+          // keep the blocks. Never invent bio, links, prices, or merch — a block
+          // with nothing verified on file ships in its honest "coming soon" state.
+          "feature-ghozt-brah": {
+            collection: "features",
+            kicker: "The Culture Report — Feature",
+            title: "Ghozt Brah — pain music that actually hurts",
+            meta: "@ghoztbrah · Feature · October 13, 2026",
+            bodyHTML: `<!-- ARTIST PAGE TEMPLATE v1 — Ghozt Brah, first use (2026-11-05). Blocks: dek + intro / music / videos / about / follow / membership / merch / booking + contact / how-this-page-works. Audio-player block pattern (add when MP3s are hosted in-repo under artists/<slug>/): <audio controls preload="none" src="artists/ghozt-brah/handcuffs.mp3"></audio> next to its track line. -->
+                  <p class="dek">Pain music for the ones who carry it. Hartford&rsquo;s own Ghozt Brah &mdash; the first Circle of Influence artist with a home on The Culture Report.</p>
+                  <p><strong>Hartford, CT &middot; Pain music / underground hip-hop &middot; @ghoztbrah</strong></p>
+                  <p>Don&rsquo;s word on him, from the CEO&rsquo;s A&amp;R report: &ldquo;pain music that actually hurts&rdquo; &mdash; &ldquo;been on my radar for some time.&rdquo; Ghozt came through the full feature pipeline first: discovery, audit, write-up, publish, first contact. The receipts version lives in the press piece: <a href="#press-ghozt-brah-pipeline" data-nav="press-ghozt-brah-pipeline">Ghozt Brah: First Through the Full Pipeline</a>.</p>
+                  <h2>The music</h2>
+                  <p>Two new songs, sent straight from the artist on October 15, 2026:</p>
+                  <p><strong>&ldquo;HandCuffs&rdquo; &mdash; 5:37.</strong> Hear it in the &ldquo;HandCuffs&rdquo; reel, published October 17, 2026: <a href="https://www.instagram.com/reel/Demo2OPDqm-/" target="_blank" rel="noopener">Watch on Instagram &rarr;</a></p>
+                  <p><strong>&ldquo;Live Like This&rdquo; &mdash; 3:22.</strong> New music in the works &mdash; the full stream lands here when the artist clears it for release.</p>
+                  <p>&ldquo;See No Evil&rdquo; (prod. Hebrew Beatz) is out now on his YouTube: <a href="https://www.youtube.com/@ghoztbrah" target="_blank" rel="noopener">YouTube @ghoztbrah</a></p>
+                  <h2>The videos</h2>
+                  <p><strong>&ldquo;HandCuffs&rdquo; reel</strong> &mdash; published October 17, 2026. The canonical cut.</p>
+                  <div class="feat-embed" style="position:relative;width:100%;max-width:420px;aspect-ratio:4/5;border:1px solid var(--card-line);overflow:hidden;margin:0 0 16px">
+                    <iframe src="https://www.instagram.com/reel/Demo2OPDqm-/embed" title="Ghozt Brah HandCuffs reel on Instagram" loading="lazy" allowfullscreen scrolling="no" allow="encrypted-media; picture-in-picture" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+                  </div>
+                  <p><a href="https://www.instagram.com/reel/Demo2OPDqm-/" target="_blank" rel="noopener">Watch on Instagram &rarr;</a></p>
+                  <p><strong>The feature reel</strong> &mdash; published October 13, 2026. The first feature: thirty-five seconds, black and gold, his own footage.</p>
+                  <div class="feat-embed" style="position:relative;width:100%;max-width:420px;aspect-ratio:4/5;border:1px solid var(--card-line);overflow:hidden;margin:0 0 16px">
+                    <iframe src="https://www.instagram.com/reel/DecarFTyVex/embed" title="Ghozt Brah feature reel on Instagram" loading="lazy" allowfullscreen scrolling="no" allow="encrypted-media; picture-in-picture" style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe>
+                  </div>
+                  <p><a href="https://www.instagram.com/reel/DecarFTyVex/" target="_blank" rel="noopener">Watch on Instagram &rarr;</a></p>
+                  <h2>About Ghozt Brah</h2>
+                  <p>His bio says it plain: he&rsquo;s dropping all unreleased pain. That&rsquo;s the posture of somebody who writes from the wound, not from the playlist.</p>
+                  <p>Ghozt is family in this lane &mdash; the &ldquo;you came through the pipeline, you get treated like family&rdquo; level &mdash; while the work continues. Anything further moves at the artist&rsquo;s pace, not ours.</p>
+                  <p>No deal is signed. What&rsquo;s on this page is what&rsquo;s verified: the feature, the reels, the two new songs in the works.</p>
+                  <h2>Follow</h2>
+                  <p>Instagram: <a href="https://www.instagram.com/ghoztbrah" target="_blank" rel="noopener">@ghoztbrah</a><br />
+                  YouTube: <a href="https://www.youtube.com/@ghoztbrah" target="_blank" rel="noopener">@ghoztbrah</a></p>
+                  <h2>Circle of Influence</h2>
+                  <p>Ghozt is the first Circle of Influence artist with a page on The Culture Report. Membership is by invitation. The operation&rsquo;s member tiers live on the <a href="#services" data-nav="services">Services</a> page.</p>
+                  <h2>Merch</h2>
+                  <p>No merch line yet &mdash; this space fills in when the artist&rsquo;s line lands.</p>
+                  <h2>Booking &amp; contact</h2>
+                  <p>Booking runs through The Collective &mdash; Malik leads the live lane. For press and features, start a PR intake. For shows, use the partner form.</p>
+                  <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSf-aTpCzQQXTzRePI6W2I1F1tpcHv34I7mKGw4BwLoNf2X9RQ/viewform" target="_blank" rel="noopener">Start your PR intake &rarr;</a><br />
+                  <a href="https://docs.google.com/forms/d/1WMc0G6BWrzJq6n9VTnWJ0-NvoHu_xtJBaSRjHq4FhL8" target="_blank" rel="noopener">Partner on a show or tour &rarr;</a></p>
+                  <div class="offer-block">
+                    <h3>ARTIST PR PACKAGE &mdash; $100</h3>
+                    <p>Culture Report feature, blog post, single/album review, one week of story posts, weekly email blast, music video collab post &mdash; plus your choice of (A) Social Audit + 7-Day Pressure Pack, (B) Audit + 2 strategy calls, or (C) Pressure Pack + 2 calls. The same machine that built this page.</p>
+                  </div>
+                  <h2>How this page works</h2>
+                  <p>This page is Ghozt&rsquo;s home base. He runs his own content &mdash; new music, videos, and updates come from him and go live here. Digital Diego OS runs the machine behind it: the page, the list, the rollout. The artist manages the art; the OS manages the operation.</p>`
           },
           "feature-smooth-haynes": {
             collection: "features",
