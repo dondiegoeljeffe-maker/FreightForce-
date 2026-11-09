@@ -1,0 +1,26 @@
+name: DDOS Prime custody heartbeat
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  contents: read
+jobs:
+  custody:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate DDOS Prime custody files
+        run: python3 ddos/prime/custody_check.py
+      - name: Persist non-sensitive execution evidence
+        if: always()
+        run: |
+          mkdir -p proof
+          python3 ddos/prime/custody_check.py > proof/prime-custody.json || true
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: prime-custody-evidence
+          path: proof/prime-custody.json
+          retention-days: 14
