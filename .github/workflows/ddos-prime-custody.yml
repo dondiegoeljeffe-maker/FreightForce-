@@ -1,6 +1,15 @@
 name: DDOS Prime custody heartbeat
 on:
   workflow_dispatch:
+    inputs:
+      work_id:
+        description: 'Existing canonical WORK_ID (required for gate)'
+        required: true
+        type: string
+      source_id:
+        description: 'Existing SmartBrief SOURCE_ID (required for gate)'
+        required: true
+        type: string
   schedule:
     - cron: '17 * * * *'
 permissions:
@@ -11,6 +20,17 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
+      - name: Test SmartBrief-to-law pre-dispatch gate (offline)
+        run: python3 ddos/prime/test_authority_gate.py
+      - name: Install read-only Sheets auth dependency for controlled live gate
+        if: github.event_name == 'workflow_dispatch'
+        run: python3 -m pip install google-auth requests
+      - name: Controlled live canonical admission (fails closed, no execution)
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          DDOS_WORK_ID: ${{ inputs.work_id }}
+          DDOS_SOURCE_ID: ${{ inputs.source_id }}
+        run: python3 ddos/prime/authority_gate.py
       - name: Validate DDOS Prime custody files
         run: python3 ddos/prime/custody_check.py
       - name: Persist non-sensitive execution evidence
