@@ -2,6 +2,8 @@
 """Read-only DDOS custody check. No dependencies, credentials, or ledger writes."""
 import argparse
 import json
+import os
+import datetime
 import pathlib
 import subprocess
 import sys
@@ -30,7 +32,19 @@ def check(root, urls, timeout=8):
                 endpoints[url] = {"ok": 200 <= response.status < 400, "status": response.status}
         except (urllib.error.URLError, TimeoutError, ValueError) as exc:
             endpoints[url] = {"ok": False, "error": type(exc).__name__}
+    # Custody checks are telemetry, not evidence of an authorized execution.
+    # A valid live execution must provide separately verified source, contract,
+    # provider action, and canonical readback receipts. Never infer these from files.
+    required_proof = ("canonical_source_id", "source_revision", "work_id",
+                      "worker_contract_id", "provider_receipt_id",
+                      "canonical_readback_id")
+    proof = {key: os.environ.get("DDOS_" + key.upper(), "").strip()
+             for key in required_proof}
+    proof_complete = all(proof.values())
     return {
+        "checked_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "execution_proof_complete": proof_complete,
+        "missing_execution_proof": [key for key, value in proof.items() if not value],
         "worker": "Diego Prime", "mode": "read-only", "source_revision": revision,
         "required_files": files, "endpoints": endpoints,
         "custody_files_present": all(files.values()),
