@@ -25,14 +25,17 @@ def decide(snapshot, work_id, source_id):
     for law in REQUIRED_LAWS:
         if law not in found:
             return False, "MISSING_LAW:" + law
-        if any(flag in found[law][9].upper() for flag in BLOCKED):
+        if (not found[law][9].strip() or any(flag in found[law][9].upper() for flag in BLOCKED)):
             return False, "LAW_NOT_CERTIFIED:" + law
     briefs = snapshot[TABS[2]]
     matches = [r for r in briefs[1:] if len(r) >= 9 and
-               work_id in [v.strip() for v in r[2].split(";")] and\n               source_id in [v.strip() for v in r[1].split(";")]]
+               work_id in [v.strip() for v in r[2].split(";")] and
+               source_id in [v.strip() for v in r[1].split(";")]]
     if not matches:
         return False, "NO_MATCHING_SMARTBRIEF_CONTRACT"
-    if any(any(flag in r[8].upper() for flag in ("ARCHIVE", "SUPERSEDED", "CLOSED", "CANCELLED")) for r in matches):\n        return False, "SMARTBRIEF_NOT_EXECUTION_ELIGIBLE"\n    if not all(r[5].strip().upper() in ("", "NONE", "COMPLETE", "PASSED") for r in matches):
+    if any(any(flag in r[8].upper() for flag in ("ARCHIVE", "SUPERSEDED", "CLOSED", "CANCELLED")) for r in matches):
+        return False, "SMARTBRIEF_NOT_EXECUTION_ELIGIBLE"
+    if not all(r[5].strip().upper() in ("", "NONE", "COMPLETE", "PASSED") for r in matches):
         return False, "SMARTBRIEF_ACCEPTANCE_INCOMPLETE"
     return True, "AUTHORIZED_FOR_SEPARATE_EXECUTOR_REVIEW"
 
