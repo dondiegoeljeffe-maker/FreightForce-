@@ -4,7 +4,7 @@ from authority_gate import decide, TABS
 class GateTests(unittest.TestCase):
     def setUp(self):
         self.snapshot = {
-            TABS[0]: [["LAW_ID", "LAW_TITLE", "RULE", "OWNER", "APPLICABLE_RUNTIMES", "ENFORCEMENT_CHECK", "FAILURE_RESPONSE", "TEST", "LAST_READBACK", "CERTIFICATION_STATE"]] + [[law] + [""] * 8 + ["CERTIFIED"] for law in ("RBP-001", "RBP-002", "RBP-003", "RBP-004")],
+            TABS[0]: [["LAW_ID", "LAW_TITLE", "RULE", "OWNER", "APPLICABLE_RUNTIMES", "ENFORCEMENT_CHECK", "FAILURE_RESPONSE", "TEST", "LAST_READBACK", "CERTIFICATION_STATE"]] + [[law] + [""] * 8 + ["CERTIFIED"] for law in ("RBP-001", "RBP-002", "RBP-003", "RBP-004")] + [["RBP-006", "", "PARALLEL_ELIGIBLE"] + [""] * 6 + ["PARALLEL_ELIGIBLE"]],
             TABS[1]: [["SECTION_NO", "SECTION", "CANONICAL_SURFACE", "STATUS"],
                       ["1", "Mission", "Current mandate", "CANONICAL"],
                       ["2", "Operating Laws", "LAW_REGISTRY", "CANONICAL"],
@@ -13,6 +13,16 @@ class GateTests(unittest.TestCase):
                      [["Example", "doc-1", "work-1", "Fo", "DONE", "NONE", "", "provider-proof", "KEEP"]]
         }
     def test_valid_contract(self):
+        self.assertTrue(decide(self.snapshot, "work-1", "doc-1")[0])
+    def test_canonical_freeze_denied(self):
+        self.snapshot[TABS[0]][5][2] = "P0 FREEZE OVERRIDE"
+        self.snapshot[TABS[0]][5][9] = "P0_FREEZE_OVERRIDE_ACTIVE"
+        self.assertEqual(decide(self.snapshot, "work-1", "doc-1")[1], "P0_FREEZE_ACTIVE")
+    def test_missing_freeze_law_denied(self):
+        self.snapshot[TABS[0]].pop()
+        self.assertEqual(decide(self.snapshot, "work-1", "doc-1")[1], "MISSING_LAW:RBP-006")
+    def test_prefixed_apps_script_source(self):
+        self.snapshot[TABS[2]][1][1] = "Apps Script doc-1"
         self.assertTrue(decide(self.snapshot, "work-1", "doc-1")[0])
     def test_archived_brief_denied(self):
         self.snapshot[TABS[2]][1][8] = "ARCHIVE / DEDUPED"
