@@ -11,7 +11,8 @@ class GateTests(unittest.TestCase):
         }
     def test_valid_contract(self):
         self.assertTrue(decide(self.snapshot, "work-1", "doc-1")[0])
-    def test_archived_brief_denied(self):\n        self.snapshot[TABS[2]][1][8] = "ARCHIVE / DEDUPED"\n        self.assertEqual(decide(self.snapshot, "work-1", "doc-1")[1], "SMARTBRIEF_NOT_EXECUTION_ELIGIBLE")\n    def test_missing_contract_denied(self):
+    def test_archived_brief_denied(self):
+        self.snapshot[TABS[2]][1][8] = "ARCHIVE / DEDUPED"\n        self.assertEqual(decide(self.snapshot, "work-1", "doc-1")[1], "SMARTBRIEF_NOT_EXECUTION_ELIGIBLE")\n    def test_missing_contract_denied(self):
         self.assertFalse(decide(self.snapshot, "work-2", "doc-1")[0])
     def test_uncertified_law_denied(self):
         self.snapshot[TABS[0]][1][-1] = "UNCERTIFIED"
