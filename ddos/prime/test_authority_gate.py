@@ -5,7 +5,10 @@ class GateTests(unittest.TestCase):
     def setUp(self):
         self.snapshot = {
             TABS[0]: [["LAW_ID"] + [""] * 9] + [[law] + [""] * 8 + ["CERTIFIED"] for law in ("RBP-001", "RBP-002", "RBP-003", "RBP-004")],
-            TABS[1]: [["SECTION_NO", "SECTION", "CANONICAL_SURFACE", "STATUS"]],
+            TABS[1]: [["SECTION_NO", "SECTION", "CANONICAL_SURFACE", "STATUS"],
+                      ["1", "Mission", "Current mandate", "CANONICAL"],
+                      ["2", "Operating Laws", "LAW_REGISTRY", "CANONICAL"],
+                      ["4", "Decision Rights", "EXECUTION_AUTHORITY_LADDER", "ACTIVE"]],
             TABS[2]: [["SMARTBRIEF", "SOURCE_ID", "EXISTING_WORK_ID", "OWNER", "STATE", "MISSING_ACCEPTANCE_GATE", "NEXT", "POD", "DISPOSITION"]] +
                      [["Example", "doc-1", "work-1", "Fo", "DONE", "NONE", "", "provider-proof", "KEEP"]]
         }
@@ -13,6 +16,15 @@ class GateTests(unittest.TestCase):
         self.assertTrue(decide(self.snapshot, "work-1", "doc-1")[0])
     def test_archived_brief_denied(self):
         self.snapshot[TABS[2]][1][8] = "ARCHIVE / DEDUPED"
+        self.assertEqual(decide(self.snapshot, "work-1", "doc-1")[1], "SMARTBRIEF_NOT_EXECUTION_ELIGIBLE")
+    def test_missing_playbook_section_denied(self):
+        self.snapshot[TABS[1]].pop()
+        self.assertEqual(decide(self.snapshot, "work-1", "doc-1")[1], "PLAYBOOK_SECTION_NOT_ACTIVE:4")
+    def test_partial_law_denied(self):
+        self.snapshot[TABS[0]][2][-1] = "PARTIAL"
+        self.assertEqual(decide(self.snapshot, "work-1", "doc-1")[1], "LAW_NOT_CERTIFIED:RBP-002")
+    def test_closed_source_denied(self):
+        self.snapshot[TABS[2]][1][4] = "CLOSED"
         self.assertEqual(decide(self.snapshot, "work-1", "doc-1")[1], "SMARTBRIEF_NOT_EXECUTION_ELIGIBLE")
     def test_missing_contract_denied(self):
         self.assertFalse(decide(self.snapshot, "work-2", "doc-1")[0])
