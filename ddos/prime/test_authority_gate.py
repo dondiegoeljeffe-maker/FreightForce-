@@ -4,7 +4,7 @@ from authority_gate import decide, TABS
 class GateTests(unittest.TestCase):
     def setUp(self):
         self.snapshot = {
-            TABS[0]: [["LAW_ID"] + [""] * 9] + [[law] + [""] * 8 + ["CERTIFIED"] for law in ("RBP-001", "RBP-002", "RBP-003", "RBP-004")],
+            TABS[0]: [["LAW_ID", "LAW_TITLE", "RULE", "OWNER", "APPLICABLE_RUNTIMES", "ENFORCEMENT_CHECK", "FAILURE_RESPONSE", "TEST", "LAST_READBACK", "CERTIFICATION_STATE"]] + [[law] + [""] * 8 + ["CERTIFIED"] for law in ("RBP-001", "RBP-002", "RBP-003", "RBP-004")],
             TABS[1]: [["SECTION_NO", "SECTION", "CANONICAL_SURFACE", "STATUS"],
                       ["1", "Mission", "Current mandate", "CANONICAL"],
                       ["2", "Operating Laws", "LAW_REGISTRY", "CANONICAL"],
