@@ -11,9 +11,13 @@ from datetime import datetime, timezone
 
 SHEET_ID = "1DAD4kLdf7A450Yu_J1yFSpO6HtbgPRPgFIGuzWN2krk"
 REQUIRED_LAWS = ("RBP-001", "RBP-002", "RBP-003", "RBP-004")
-BLOCKED = ("UNCERTIFIED", "PENDING", "UNVERIFIED", "BLOCKED", "PARTIAL")
 TABS = ("LAW_REGISTRY!A1:J250", "OPERATING_PLAYBOOK_INDEX!A1:D100",
         "SMARTBRIEF_CLOSURE_REGISTER!A1:J1500")
+
+def source_id_values(cell):
+    """Preserve exact IDs while allowing the canonical Apps Script label prefix."""
+    return [part[len("Apps Script "):].strip() if part.startswith("Apps Script ") else part
+            for part in (item.strip() for item in cell.split(";"))]
 
 def decide(snapshot, work_id, source_id):
     if not work_id or not source_id:
@@ -29,6 +33,11 @@ def decide(snapshot, work_id, source_id):
             return False, "MISSING_LAW:" + law
         if found[law][9].strip().upper() != "CERTIFIED":
             return False, "LAW_NOT_CERTIFIED:" + law
+    freeze = found.get("RBP-006")
+    if freeze is None:
+        return False, "MISSING_LAW:RBP-006"
+    if "P0 FREEZE OVERRIDE" in freeze[2].upper() or "P0_FREEZE_OVERRIDE_ACTIVE" in freeze[9].upper():
+        return False, "P0_FREEZE_ACTIVE"
     playbook = snapshot[TABS[1]]
     if not playbook or playbook[0][:4] != ["SECTION_NO", "SECTION", "CANONICAL_SURFACE", "STATUS"]:
         return False, "INVALID_PLAYBOOK_SCHEMA"
@@ -41,7 +50,7 @@ def decide(snapshot, work_id, source_id):
         return False, "INVALID_SMARTBRIEF_SCHEMA"
     matches = [r for r in briefs[1:] if len(r) >= 9 and
                work_id in [v.strip() for v in r[2].split(";")] and
-               source_id in [v.strip() for v in r[1].split(";")]]
+               source_id in source_id_values(r[1])]
     if not matches:
         return False, "NO_MATCHING_SMARTBRIEF_CONTRACT"
     if any(any(flag in r[8].upper() for flag in ("ARCHIVE", "SUPERSEDED", "CLOSED", "CANCELLED")) or
